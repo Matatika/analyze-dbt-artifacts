@@ -1,0 +1,17 @@
+version: pipelines/v0.1
+name: dbt Test Results Datasets
+timeout: 0
+script: |-
+  meltano install extractor tap-dbt-artifacts
+  meltano install loader target-postgres
+  meltano install transformer dbt
+
+  meltano invoke dbt deps
+  meltano invoke dbt test
+
+  meltano run tap-dbt-artifacts target-postgres dbt:run
+data_components:
+- dbt
+- extractor/tap-dbt-artifacts
+- Warehouse
+

@@ -1,0 +1,34 @@
+version: datasets/v0.2
+source: dbt tests
+title: dbt Test Results
+questions: What are the overall results from my dbt tests?
+description: |-
+  Grouped results of your dbt test run results.
+
+  #dbt-tests
+metadata: |-
+  {
+    "name": "fact_test_results_grouped",
+    "label": "Test Results", 
+    "related_table": {
+      "columns": [
+        {"name": "unique_id", "label": "Test Name", "description": "Test Name"}, 
+        {"name": "total_runs", "label": "Total Runs", "description": "Total Runs"},
+        {"name": "total_passes", "label": "Passes", "description": "Passes"},
+        {"name": "total_failures", "label": "Failures", "description": "Failures"}, 
+        {"name": "avg_execution_time", "label": "Avg. Execution Time", "description": "Avg. Execution Time"},
+        {"name": "last_run", "label": "Last Run", "description": "Last Run"}
+      ]
+    }
+  }
+visualisation: '{"html-table": {}}'
+query: |-
+  SELECT
+    unique_id "fact_test_results_grouped.unique_id"
+    , total_runs "fact_test_results_grouped.total_runs"
+    , total_passes "fact_test_results_grouped.total_passes"
+    , total_failures "fact_test_results_grouped.total_failures"
+    , avg_execution_time "fact_test_results_grouped.avg_execution_time"
+    , last_run_time "fact_test_results_grouped.last_run"
+  FROM fact_test_results_grouped
+  ORDER BY total_runs, unique_id DESC
