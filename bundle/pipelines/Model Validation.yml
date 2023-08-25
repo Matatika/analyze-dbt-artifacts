@@ -1,5 +1,5 @@
 version: pipelines/v0.1
-name: dbt Test Results Datasets
+name: Model Validation
 timeout: 0
 script: |-
   meltano install extractor tap-dbt-artifacts
