@@ -16,7 +16,8 @@ script: |-
   export dbt_test_exit_code=$?
   set -e
 
-  meltano run tap-dbt-artifacts target-postgres dbt:run
+  meltano run tap-dbt-artifacts target-postgres
+  meltano invoke dbt run -m tap_dbt_artifacts
 
   exit $dbt_test_exit_code
 data_components:
