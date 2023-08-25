@@ -7,9 +7,18 @@ script: |-
   meltano install transformer dbt
 
   meltano invoke dbt deps
+
+  # disable pipeline fail on non 0 exit code for dbt test
+  # save exit code
+  # re-enable pipeline fail on non 0 exit code
+  set +e
   meltano invoke dbt test
+  export dbt_test_exit_code=$?
+  set -e
 
   meltano run tap-dbt-artifacts target-postgres dbt:run
+
+  exit $dbt_test_exit_code
 data_components:
 - dbt
 - extractor/tap-dbt-artifacts
