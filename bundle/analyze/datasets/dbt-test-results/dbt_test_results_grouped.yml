@@ -8,7 +8,7 @@ description: |-
   #dbt-tests
 metadata: |-
   {
-    "name": "fact_test_results_grouped",
+    "name": "vw_test_results_grouped",
     "label": "Test Results", 
     "related_table": {
       "columns": [
@@ -24,11 +24,11 @@ metadata: |-
 visualisation: '{"html-table": {}}'
 query: |-
   SELECT
-    unique_id "fact_test_results_grouped.unique_id"
-    , total_runs "fact_test_results_grouped.total_runs"
-    , total_passes "fact_test_results_grouped.total_passes"
-    , total_failures "fact_test_results_grouped.total_failures"
-    , avg_execution_time "fact_test_results_grouped.avg_execution_time"
-    , last_run_time "fact_test_results_grouped.last_run"
-  FROM fact_test_results_grouped
+    unique_id "vw_test_results_grouped.unique_id"
+    , total_runs "vw_test_results_grouped.total_runs"
+    , total_passes "vw_test_results_grouped.total_passes"
+    , total_failures "vw_test_results_grouped.total_failures"
+    , avg_execution_time "vw_test_results_grouped.avg_execution_time"
+    , last_run_time "vw_test_results_grouped.last_run"
+  FROM vw_test_results_grouped
   ORDER BY total_runs, unique_id DESC
