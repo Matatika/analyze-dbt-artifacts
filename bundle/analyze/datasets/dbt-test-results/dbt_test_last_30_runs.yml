@@ -18,7 +18,8 @@ metadata: |-
         {"name": "pass", "label": "Passed", "description": "Passed"}, 
         {"name": "fail", "label": "Failed", "description": "Failed"}
       ]
-    }
+    },
+    "palette": [[30, 255, 30],[255, 99, 132]]
   }
 visualisation: '{"chartjs-chart": {"chartType": "bar"}}'
 query: |-
